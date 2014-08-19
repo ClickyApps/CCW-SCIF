@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>CCW Framework App</title>
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/main.js"></script>
+        <script type="text/javascript">
+		
+		 $("form").submit(function(){
+	var landmarkID = $(this).parent().attr('data-landmark-id');
+	var postData = $(this).serialize();
+	
+	$.ajax({
+		type: 'POST',
+		data: postData+'&amp;lid='+landmarkID,
+		url: 'http://dev.clickymedia.co.uk/emailme.php',
+		success: function(data){
+			console.log(data);
+			alert('Your comment was successfully added');
+		},
+		error: function(){
+			console.log(data);
+			alert('There was an error adding your comment');
+		}
+	});
+	
+	return false;
+});
+</script>
+        
+        
+    </head>
+    <body class="progressionLog about howToUse">
+    	
+        <header>
+        	<div class="back">
+            	<a href="english/index.html" class="backArrow" title="HOME">HOME</a>
+            </div>
+            <div class="pageTitle">
+            	<h3>Email the framework</h3>
+                <h5>Tapiwch adran am fanylion</h5>
+            </div>
+            <img src="images/cubes/green_header.png" width="65" class="cube"/>
+        </header>
+
+        <div class="content" id="page-message">
+            
+           
+              
+ <div id="downloadBox" data-landmark-id="1">
+	<form method="post" action="http://dev.clickymedia.co.uk/ccwframework/www/english/emailsent.php" target="_blank">
+	  <label for="email">
+			<p>Email address:</p>
+			<input type="email" id="email" name="email">
+		</label>
+		<br>
+		<br>
+<input type="submit" value="Send Email" class="emailButton">
+	</form>
+</div>
+
+            <p>&nbsp;</p>
+            <p><img class="cubes" src="images/cubes/about_background.png" width="317"/>
+            </p>
+        </div>
+
+        <script src="js/jquery.min.js"></script> 
+        <script src="js/plugins.js"></script>
+        
+
+    </body>
+</html>
